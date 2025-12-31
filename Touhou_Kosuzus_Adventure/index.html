@@ -2,22 +2,47 @@
 <html lang="en-us">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @font-face {
+            font-family: 'MapleMono-NF-CN';
+            src: url('./font/MapleMono-NF-CN-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            font-family: 'MapleMono-NF-CN', monospace;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        div[style] {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid #0f3460;
+        }
+    </style>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Touhou Kosuzu's Adventure</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
 </head>
 <body>
-    <div style="position: absolute;left:0;top:0">
-        <div><code>Press Q:pause the game and see basic tutorial</code></div>
-        <div><code>Press R:restart the game</code></div>
-        <div><code>Press O:Go to the last level</code></div>
-        <div><code>Press P:Go to the next level</code></div>
-        <div><code>Have fun!</code></div>
+    <div class="" style="position: absolute;left:0;top:0">
+        <div>Q: Pause (and tutorial)</div>
+        <div>R: Restart</div>
+        <div>O: Previous Level</div>
+        <div>P: Next Level</div>
+        <div>Have fun!</div>
         <div>为了最佳的游戏体验</div>
         <div>请佩戴耳机</div>
         <div>并一定要关闭浏览器手势</div>
-        <div><code>P.S. W也可以跳跃</code></div>
+        <div>P.S. W也可以跳跃</div>
     </div>
     <div id="unity-container" class="unity-desktop">
         <canvas id="unity-canvas" width=1000 height=600 tabindex="-1"></canvas>
@@ -131,3 +156,51 @@
     </script>
 </body>
 </html>
+
+<script>
+function addFontLicense() {
+    const licenseLink = document.createElement('a');
+    licenseLink.href = 'https://github.com/subframe7536/maple-font/tree/variable?tab=OFL-1.1-1-ov-file#readme';
+    licenseLink.className = 'font-license';
+    licenseLink.target = '_blank';
+    licenseLink.rel = 'noopener noreferrer';
+    licenseLink.title = '查看字体许可证详情';
+    licenseLink.textContent = '字体：Maple Font (OFL-1.1)';
+    const style = document.createElement('style');
+    style.textContent = `
+        .font-license {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 12px;
+            color: #666;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5px 8px;
+            border-radius: 3px;
+            z-index: 1000;
+            text-decoration: none;
+            border: 1px solid #eee;
+            font-family: Arial, sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .font-license:hover {
+            color: #333;
+            background: rgba(255, 255, 255, 0.95);
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .font-license {
+                font-size: 10px;
+                padding: 3px 6px;
+                bottom: 5px;
+                right: 5px;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+    document.body.appendChild(licenseLink);
+}
+document.addEventListener('DOMContentLoaded', addFontLicense);
+</script>
